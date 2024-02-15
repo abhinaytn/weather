@@ -1,7 +1,12 @@
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-function Search({search, setSearch, handleSearch}){
+function Search({ search, setSearch, handleSearch }) {
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
 
     return (
         <div className="search-engine">
@@ -11,12 +16,11 @@ function Search({search, setSearch, handleSearch}){
                 name="search"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
+                onKeyPress={handleKeyPress}
             />
-            <button onClick={handleSearch}>
-                Search
-            </button>
+            <button onClick={handleSearch}>Search</button>
         </div>
     );
 }
 
-export default Search
+export default Search;
